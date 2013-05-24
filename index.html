@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+ <html>
+ <head>
+ 	<link rel="stylesheet" type="text/css" href="index.css">
+ <script>
+ function allowDrop(ev)
+ {
+ ev.preventDefault();
+ }
+
+ function drag(ev)
+ {
+ ev.dataTransfer.setData("Text",ev.target.id);
+ }
+
+ function drop(ev)
+ {
+ ev.preventDefault();
+ var data=ev.dataTransfer.getData("Text");
+ ev.target.appendChild(document.getElementById(data));
+ }
+ 
+ document.onkeydown=callback;
+ </script>
+ </head>
+ <body>
+<div id="contentpane">
+ <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">  
+ <div id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69"> </div></div>
+ <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+ </div>
+
+
+ </body>
+ </html>

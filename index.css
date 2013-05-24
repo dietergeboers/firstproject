@@ -1,0 +1,38 @@
+html,body {
+	height: 100%;
+	background-color: WHITE;
+	padding: 0px;
+	border: 0px;
+	margin: 0px;
+}
+
+div#contentpane{
+	height : 100%;
+	width : 800px;
+	margin-left:auto;
+	margin-right:auto;
+	
+	background-color: PURPLE;
+}
+
+div#div1{
+	left: 100px;
+	top: 100px;
+	height: 100px;
+	width: 500px;
+	background-color: GREEN;
+}
+
+div#drag1{
+	width:100px;
+	height: 100px;
+	background-color: ORANGE;
+}
+
+div#div2{
+	left: 600px;
+	top: 100px;
+	height: 100px;
+	width: 500px;
+	background-color: RED;
+}
