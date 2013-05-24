@@ -11,28 +11,32 @@ div#contentpane{
 	width : 800px;
 	margin-left:auto;
 	margin-right:auto;
-	
 	background-color: PURPLE;
 }
 
-div#div1{
-	left: 100px;
-	top: 100px;
-	height: 100px;
-	width: 500px;
+div#playarea{
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 100%;
 	background-color: GREEN;
 }
 
-div#drag1{
-	width:100px;
+div#sourcearea{
+	width:100%;
 	height: 100px;
 	background-color: ORANGE;
 }
 
-div#div2{
-	left: 600px;
-	top: 100px;
-	height: 100px;
-	width: 500px;
+div#playarea{
+	height: 100%;
+	width: 100%;
 	background-color: RED;
+}
+div#prototype{
+	top:10px;
+	left: 40px;
+	width: 300px;
+	height: 80px;
+	background-color: PURPLE;
 }

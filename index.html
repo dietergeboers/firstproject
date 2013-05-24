@@ -3,6 +3,8 @@
  <head>
  	<link rel="stylesheet" type="text/css" href="index.css">
  <script>
+ players ={};
+ 
  function allowDrop(ev)
  {
  ev.preventDefault();
@@ -25,10 +27,13 @@
  </head>
  <body>
 <div id="contentpane">
- <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">  
- <div id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69"> </div></div>
- <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
- </div>
+	<div id = "sourcearea">
+		<div id ="prototype" > test</div>	
+	</div>
+	<div id = "playarea">
+		sometext
+	</div>
+</div>
 
 
  </body>
