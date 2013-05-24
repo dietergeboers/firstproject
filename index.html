@@ -19,18 +19,22 @@
  {
  ev.preventDefault();
  var data=ev.dataTransfer.getData("Text");
- ev.target.appendChild(document.getElementById(data));
+ ev.target.appendChild(clone(data));
  }
- 
- document.onkeydown=callback;
+ function clone(divId)
+ {
+    var clone = document.getElementById(divId).cloneNode(true);
+    clone.id = "playerdiv"
+    return clone
+ }
  </script>
  </head>
  <body>
 <div id="contentpane">
-	<div id = "sourcearea">
-		<div id ="prototype" > test</div>	
+	<div id="sourcearea">
+		<div id ="prototype" ondragstart="drag(event)" draggable="true" > test</div>	
 	</div>
-	<div id = "playarea">
+	<div id="playarea" ondrop="drop(event)" ondragover="allowDrop(event)">
 		sometext
 	</div>
 </div>
