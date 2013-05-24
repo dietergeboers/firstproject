@@ -5,13 +5,23 @@ html,body {
 	border: 0px;
 	margin: 0px;
 }
-div#playerdiv
+.playerdiv
 {
-	top:10px;
-	left: 40px;
-	width: 100%;
+	margin-top:10px;
+	margin-left: 40px;
+	margin-right: 10px;
 	height: 80px;
-	background-color: PINK;
+	background-color: GREEN;
+}
+.pointdisplay
+{
+	float:right;
+	margin-top:10px;
+	margin-right: 10px;
+	height: 50px;
+	width:50px;
+	
+	background-color: WHITE;
 }
 div#contentpane{
 	height : 100%;
@@ -20,8 +30,17 @@ div#contentpane{
 	margin-right:auto;
 	background-color: PURPLE;
 }
-
+div#thrash{
+	float:right;
+	margin-left:auto;
+	margin-right:10px;
+	width:100px;
+	height:100px;
+	padding-top:0px;
+	background-color: WHITE;
+}
 div#playarea{
+	padding-top:20px;
 	left: 0px;
 	top: 0px;
 	height: 100%;
@@ -36,11 +55,12 @@ div#sourcearea{
 }
 
 div#playarea{
-	height: 100%;
+	margin-bottom:0px;
 	width: 100%;
 	background-color: RED;
 }
 div#prototype{
+	float:left;
 	top:10px;
 	left: 40px;
 	width: 300px;

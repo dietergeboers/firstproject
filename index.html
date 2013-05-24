@@ -4,7 +4,18 @@
  	<link rel="stylesheet" type="text/css" href="index.css">
  <script>
  players ={};
+ function el(id)
+ {
+ 	return document.getElementById(id);
+ }
+ function createCallback(id,playerid)
+ {
+ 	return function (){
+ 		el(id).innerHTML =players[playerid].point;
+ 	};
+ }
  
+ var dragged = null;
  function allowDrop(ev)
  {
  ev.preventDefault();
@@ -12,30 +23,68 @@
 
  function drag(ev)
  {
- ev.dataTransfer.setData("Text",ev.target.id);
+ 	dragged=ev.srcElement.id;
  }
 
  function drop(ev)
  {
  ev.preventDefault();
- var data=ev.dataTransfer.getData("Text");
- ev.target.appendChild(clone(data));
+ var p = createplayer();
+ ev.target.appendChild(p);
  }
- function clone(divId)
+ count = 0;
+ function newplayer(id,pointcallback){
+ 	var rv = {};
+ 	rv.name = id;
+ 	rv.point = 0;
+ 	function setPoint(value)
+ 	{
+ 		rv.point=value;
+ 		pointcallback();
+ 	}
+ 	rv.remove = function(count)
+ 						{
+ 							setPoint(this.point-count);
+ 						}
+ 	rv.add = function(count)
+ 						{
+ 							setPoint(this.point+count);
+ 						}
+ 	return rv;
+ }
+ function createplayer()
  {
-    var clone = document.getElementById(divId).cloneNode(true);
-    clone.id = "playerdiv"
-    return clone
+    var clone = document.createElement("div");
+    count=count+1;
+    clone.id = "playerdiv" + count;
+    clone.className="playerdiv";
+    clone.draggable="true";
+    clone.setAttribute("ondragstart","drag(event)");
+    var subdiv = document.createElement("div");
+    subdiv.id=clone.id+"sub";
+    subdiv.className="pointdisplay";
+    players[clone.id]=newplayer(clone.id,createCallback(subdiv.id,clone.id));
+    subdiv.addEventListener("click",function(){
+    	players[clone.id].add(1);
+    });
+    clone.appendChild(subdiv);
+ 	   
+    return clone;
+ }
+ function disposeDiv(event)
+ {
+ 	document.getElementById(dragged).parentNode.removeChild(document.getElementById(dragged));
  }
  </script>
  </head>
  <body>
 <div id="contentpane">
 	<div id="sourcearea">
-		<div id ="prototype" ondragstart="drag(event)" draggable="true" > test</div>	
+		<div id ="prototype" ondragstart="drag(event)" draggable="true" > test</div>
+		<div id="thrash" ondrop="disposeDiv(event)" ondragover="allowDrop(event)"> </div>
 	</div>
 	<div id="playarea" ondrop="drop(event)" ondragover="allowDrop(event)">
-		sometext
+		
 	</div>
 </div>
 
